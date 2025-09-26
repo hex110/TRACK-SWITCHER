@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__documentation__godot_retrieve"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2vj3kvu024kw"]
+
+[ext_resource type="PackedScene" uid="uid://biwkpj18tcah3" path="res://Objects/TrackUpgrades/Base/BaseTrackUpgrade.tscn" id="1_1fweh"]
+[ext_resource type="Texture2D" uid="uid://b7lxy6dgrb68k" path="res://Objects/TrackUpgrades/Drums/drumsupgrade.png" id="2_y0hup"]
+
+[node name="DrumsTrackUpgrade" instance=ExtResource("1_1fweh")]
+
+[node name="Particles" parent="CollisionShape2D" index="0"]
+position = Vector2(0, 2)
+
+[node name="Sprite" parent="CollisionShape2D" index="2"]
+position = Vector2(1, -1.1920929e-07)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_y0hup")
+
+[node name="LayerLabel" parent="CanvasLayer" index="0"]
+text = "Drums track unlocked!"

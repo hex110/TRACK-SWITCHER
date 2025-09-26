@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://de45tlnx4v04f"]
+
+[ext_resource type="Script" uid="uid://ctm4d8kunc1qh" path="res://UI/FinishGameScreen/finish_game_screen.gd" id="1_2o2a2"]
+[ext_resource type="PackedScene" uid="uid://keo01h3sk8tx" path="res://UI/Elements/Button.tscn" id="1_kltsw"]
+[ext_resource type="AudioStream" uid="uid://cvmadbfnijn8n" path="res://UI/FinishGameScreen/325611__shadydave__my-love-piano-loop.mp3" id="3_64q8a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2o2a2"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_64q8a"]
+font_size = 26
+
+[node name="FinishGameScreen" type="CanvasLayer"]
+script = ExtResource("1_2o2a2")
+finish_song = ExtResource("3_64q8a")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Thank you for playing TRACK SWITCHER!"
+label_settings = SubResource("LabelSettings_2o2a2")
+
+[node name="Label3" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "The entire game is open source! You can find credits and links for everything used over there:
+"
+label_settings = SubResource("LabelSettings_64q8a")
+autowrap_mode = 3
+
+[node name="LinkButton" type="LinkButton" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 26
+text = "https://github.com/hex110/TRACK-SWITCHER"
+underline = 1
+uri = "https://github.com/hex110/TRACK-SWITCHER"
+
+[node name="Label2" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "
+My main inspiration for this game was Neon White. I wanted to create something with intuitive level design and speedrun-focused gameplay, but with a unique twist: toggleable music tracks that not only make the soundtrack more epic, but also activate new objects that increase difficulty while opening faster completion routes.
+
+The biggest challenge was the level design itself. Balancing everything within the player's limited moveset while managing difficulty curves and ensuring the track-activated objects felt meaningful and fun proved more complex than I anticipated.
+
+While the game isn't fully polished and some assets don't quite match up, I hope you enjoyed playing my first game. I'd love to have you back for my second one! <3"
+label_settings = SubResource("LabelSettings_64q8a")
+autowrap_mode = 3
+
+[node name="BackToMenu" parent="ColorRect/MarginContainer/VBoxContainer" instance=ExtResource("1_kltsw")]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "Back to menu"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]

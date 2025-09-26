@@ -1,0 +1,152 @@
+[gd_scene load_steps=7 format=3 uid="uid://bx8j3lam2pdqr"]
+
+[ext_resource type="Script" uid="uid://c2qjlubw326lq" path="res://UI/FeedbackForm/feedback_form.gd" id="1_feedback"]
+[ext_resource type="Shader" uid="uid://d0enoelv13y6q" path="res://UI/PauseMenu/CanvasBlur.gdshader" id="2_lyrhi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jntw"]
+shader = ExtResource("2_lyrhi")
+shader_parameter/lod = 1.0
+shader_parameter/overlay_alpha = 0.784
+
+[sub_resource type="LabelSettings" id="LabelSettings_s7lv0"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_lyrhi"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_8jntw"]
+font_size = 28
+
+[node name="FeedbackForm" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_feedback")
+
+[node name="BlurBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8jntw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 630)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ContentContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer/MarginContainer/ContentContainer"]
+layout_mode = 2
+text = "Send Feedback"
+label_settings = SubResource("LabelSettings_s7lv0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/MarginContainer/ContentContainer"]
+layout_mode = 2
+
+[node name="NameContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/ContentContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/ContentContainer/NameContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Name:"
+label_settings = SubResource("LabelSettings_lyrhi")
+vertical_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer/ContentContainer/NameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Enter your name"
+
+[node name="EmailContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/ContentContainer"]
+layout_mode = 2
+
+[node name="EmailLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/ContentContainer/EmailContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Email:"
+label_settings = SubResource("LabelSettings_8jntw")
+vertical_alignment = 1
+
+[node name="EmailInput" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer/ContentContainer/EmailContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Enter your email (optional)"
+
+[node name="FeedbackContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FeedbackLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/ContentContainer/FeedbackContainer"]
+layout_mode = 2
+text = "Feedback:"
+label_settings = SubResource("LabelSettings_8jntw")
+
+[node name="FeedbackInput" type="TextEdit" parent="Panel/VBoxContainer/MarginContainer/ContentContainer/FeedbackContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Enter your feedback here..."
+wrap_mode = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/ContentContainer"]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/ContentContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Cancel"
+
+[node name="Spacer" type="Control" parent="Panel/VBoxContainer/MarginContainer/ContentContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SendButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/ContentContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Send"
+
+[node name="StatusLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/ContentContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/ContentContainer/ButtonContainer/CancelButton" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/ContentContainer/ButtonContainer/SendButton" to="." method="_on_send_pressed"]

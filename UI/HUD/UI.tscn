@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://ciu0hlv5kv06u"]
+
+[ext_resource type="Script" uid="uid://bgey5n8shf3no" path="res://UI/HUD/ui.gd" id="1_3b2b5"]
+[ext_resource type="Theme" uid="uid://cdravjaryx73k" path="res://UI/Theme.tres" id="1_b3bc3"]
+[ext_resource type="Script" uid="uid://bu3wf3my0ccwo" path="res://UI/HUD/song_control.gd" id="3_g6l6n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q0uhn"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_e707p"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_f1fl4"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_rq1cu"]
+font_size = 24
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_3b2b5")
+
+[node name="SongControl" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -704.0
+offset_top = 10.0
+offset_bottom = 124.0
+grow_horizontal = 0
+script = ExtResource("3_g6l6n")
+
+[node name="SongTitleLabel" type="Label" parent="SongControl"]
+layout_mode = 2
+theme = ExtResource("1_b3bc3")
+text = "Now Playing: -"
+label_settings = SubResource("LabelSettings_q0uhn")
+
+[node name="ProgressContainer" type="HBoxContainer" parent="SongControl"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="CurrentTimeLabel" type="Label" parent="SongControl/ProgressContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "0:00"
+label_settings = SubResource("LabelSettings_e707p")
+horizontal_alignment = 1
+
+[node name="SongProgressBar" type="ProgressBar" parent="SongControl/ProgressContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_b3bc3")
+
+[node name="TotalTimeLabel" type="Label" parent="SongControl/ProgressContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0:00"
+label_settings = SubResource("LabelSettings_f1fl4")
+horizontal_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(80, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "0:00"
+label_settings = SubResource("LabelSettings_rq1cu")
+horizontal_alignment = 1
+vertical_alignment = 1

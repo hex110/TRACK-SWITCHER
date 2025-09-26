@@ -1,0 +1,230 @@
+[gd_scene load_steps=12 format=3 uid="uid://w2jevj3o4sp"]
+
+[ext_resource type="Shader" uid="uid://d0enoelv13y6q" path="res://UI/PauseMenu/CanvasBlur.gdshader" id="1_1ckrj"]
+[ext_resource type="Theme" uid="uid://cdravjaryx73k" path="res://UI/Theme.tres" id="1_girb3"]
+[ext_resource type="Script" uid="uid://c87aw0cx3a1xa" path="res://UI/DeathScreen/death_screen.gd" id="2_xhf3v"]
+[ext_resource type="PackedScene" uid="uid://keo01h3sk8tx" path="res://UI/Elements/Button.tscn" id="3_00150"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_girb3"]
+shader = ExtResource("1_1ckrj")
+shader_parameter/lod = 1.0
+shader_parameter/overlay_alpha = 0.784
+
+[sub_resource type="LabelSettings" id="LabelSettings_girb3"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_00150"]
+font_size = 24
+font_color = Color(0.59717613, 0.59717613, 0.5971761, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xhf3v"]
+font_size = 24
+font_color = Color(0.59607846, 0.59607846, 0.59607846, 1)
+
+[sub_resource type="Animation" id="Animation_xhf3v"]
+resource_name = "Appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0.5, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0.5, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.08, 1, 1, -0.35, 0, 0, 0),
+"times": PackedFloat32Array(0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_88bmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_88bmq"]
+_data = {
+&"Appear": SubResource("Animation_xhf3v"),
+&"RESET": SubResource("Animation_88bmq")
+}
+
+[node name="DeathScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_girb3")
+script = ExtResource("2_xhf3v")
+
+[node name="BlurBackground" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_girb3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -800.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="YouDiedLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+text = "You died"
+label_settings = SubResource("LabelSettings_girb3")
+horizontal_alignment = 1
+
+[node name="SkillIssueLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "skill issue"
+label_settings = SubResource("LabelSettings_00150")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Restart" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource("3_00150")]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Restart"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "(press R to quick restart)"
+label_settings = SubResource("LabelSettings_xhf3v")
+horizontal_alignment = 1
+
+[node name="BackToMenu" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("3_00150")]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+text = "Back to menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_88bmq")
+}
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]

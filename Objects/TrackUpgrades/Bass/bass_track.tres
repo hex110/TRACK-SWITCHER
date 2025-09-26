@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrackData" load_steps=4 format=3 uid="uid://cgxawdjxx0k6x"]
+
+[ext_resource type="Texture2D" uid="uid://51k86s6qownk" path="res://Objects/TrackUpgrades/Bass/bassUI.png" id="1_77yf8"]
+[ext_resource type="Texture2D" uid="uid://263eympp0w2d" path="res://Objects/TrackUpgrades/Bass/bassUI_white.png" id="2_5al1t"]
+[ext_resource type="Script" uid="uid://xjt538310vxo" path="res://Objects/TrackUpgrades/Base/track_data.gd" id="2_durly"]
+
+[resource]
+script = ExtResource("2_durly")
+layer_name = "BassLayer"
+display_name = "Bass"
+icon = ExtResource("1_77yf8")
+icon_white = ExtResource("2_5al1t")
+beat_cooldown = 0.3
+metadata/_custom_type_script = "uid://xjt538310vxo"

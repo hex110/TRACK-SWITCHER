@@ -1,0 +1,106 @@
+[gd_scene load_steps=16 format=3 uid="uid://byisstenf8ueu"]
+
+[ext_resource type="Script" uid="uid://c1nywther6c4q" path="res://Objects/MovingSaw/moving_saw.gd" id="1_12kof"]
+[ext_resource type="Resource" uid="uid://dfd31b0bo22om" path="res://Objects/TrackUpgrades/Drums/drums_track.tres" id="2_4mpae"]
+[ext_resource type="Texture2D" uid="uid://djm1v4qlwi72i" path="res://Objects/MovingSaw/Chain.png" id="2_brc0y"]
+[ext_resource type="Texture2D" uid="uid://x5lhftlmqmfm" path="res://Objects/MovingSaw/On (38x38).png" id="3_4mpae"]
+[ext_resource type="AudioStream" uid="uid://ckeicaoh4mke" path="res://Sounds/saw.wav" id="5_70fec"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvj6n"]
+radius = 19.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brc0y"]
+atlas = ExtResource("3_4mpae")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70fec"]
+atlas = ExtResource("3_4mpae")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpjdd"]
+atlas = ExtResource("3_4mpae")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr5fp"]
+atlas = ExtResource("3_4mpae")
+region = Rect2(114, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udc1u"]
+atlas = ExtResource("3_4mpae")
+region = Rect2(152, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbeaa"]
+atlas = ExtResource("3_4mpae")
+region = Rect2(190, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlugp"]
+atlas = ExtResource("3_4mpae")
+region = Rect2(228, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voubl"]
+atlas = ExtResource("3_4mpae")
+region = Rect2(266, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tej4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brc0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70fec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpjdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr5fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udc1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbeaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlugp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voubl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="MovingSaw" type="Node2D" node_paths=PackedStringArray("saw_body")]
+process_mode = 4
+script = ExtResource("1_12kof")
+saw_body = NodePath("AnimatableBody2D")
+chain_texture = ExtResource("2_brc0y")
+track_data = ExtResource("2_4mpae")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+disable_mode = 2
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+process_mode = 3
+shape = SubResource("CircleShape2D_vvj6n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D/CollisionShape2D"]
+process_mode = 3
+sprite_frames = SubResource("SpriteFrames_tej4i")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("5_70fec")
+volume_db = -11.093
+autoplay = true
+max_distance = 10000.0
+attenuation = 1.624505
+bus = &"Sounds"

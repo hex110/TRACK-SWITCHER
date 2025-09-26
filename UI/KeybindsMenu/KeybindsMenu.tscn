@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsgknian0p6qf"]
+
+[ext_resource type="Theme" uid="uid://cdravjaryx73k" path="res://UI/Theme.tres" id="1_hpfmu"]
+[ext_resource type="Script" uid="uid://c5t14cxbm00f8" path="res://UI/KeybindsMenu/keybinds_menu.gd" id="2_s2ve1"]
+[ext_resource type="PackedScene" uid="uid://5fwhhclpag8m" path="res://UI/KeybindsMenu/InputButton.tscn" id="3_h365m"]
+[ext_resource type="PackedScene" uid="uid://keo01h3sk8tx" path="res://UI/Elements/Button.tscn" id="4_h365m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jhcbk"]
+font_size = 64
+
+[node name="Keybinds" type="Control" node_paths=PackedStringArray("action_list")]
+show_behind_parent = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hpfmu")
+script = ExtResource("2_s2ve1")
+input_button_scene = ExtResource("3_h365m")
+action_list = NodePath("MarginContainer/VBoxContainer/ScrollContainer/ActionList")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="KeybindsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Keybinds"
+label_settings = SubResource("LabelSettings_jhcbk")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputButton" parent="MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("3_h365m")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_h365m")]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+text = "Back"
+
+[node name="ResetButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_h365m")]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "Reset to default"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

@@ -1,0 +1,142 @@
+[gd_scene load_steps=12 format=3 uid="uid://dpacnrck4uv8q"]
+
+[ext_resource type="Theme" uid="uid://cdravjaryx73k" path="res://UI/Theme.tres" id="1_h1pnu"]
+[ext_resource type="Script" uid="uid://b421820u6nm4h" path="res://UI/LevelStartScreen/level_start_screen.gd" id="2_h1pnu"]
+[ext_resource type="Shader" uid="uid://d0enoelv13y6q" path="res://UI/PauseMenu/CanvasBlur.gdshader" id="3_dfmfm"]
+[ext_resource type="PackedScene" uid="uid://keo01h3sk8tx" path="res://UI/Elements/Button.tscn" id="4_1ng71"]
+[ext_resource type="Texture2D" uid="uid://51k86s6qownk" path="res://Objects/TrackUpgrades/Bass/bassUI.png" id="4_kve71"]
+[ext_resource type="AudioStream" uid="uid://xnk3gaocjco1" path="res://Sounds/char_mad_revive.ogg" id="6_dfmfm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1pnu"]
+shader = ExtResource("3_dfmfm")
+shader_parameter/lod = 1.0000000475
+shader_parameter/overlay_alpha = 0.784
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfmfm"]
+shader = ExtResource("3_dfmfm")
+shader_parameter/lod = 1.0
+shader_parameter/overlay_alpha = 0.784
+
+[sub_resource type="LabelSettings" id="LabelSettings_kve71"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_girb3"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_xhf3v"]
+font_size = 24
+font_color = Color(0.59607846, 0.59607846, 0.59607846, 1)
+
+[node name="LevelStartScreen" type="Control" node_paths=PackedStringArray("tracks_container", "press_key_to_start", "level_name")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h1pnu")
+script = ExtResource("2_h1pnu")
+tracks_container = NodePath("MarginContainer/VBoxContainer/TracksContainer")
+press_key_to_start = NodePath("MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/PressKeyToStartLabel")
+level_name = NodePath("MarginContainer/VBoxContainer/LevelNameLabel")
+
+[node name="BlurBackground" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_h1pnu")
+
+[node name="BlurBackgroundTutorial" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dfmfm")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 578.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="TutorialLabel" type="Label" parent="BlurBackgroundTutorial"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1190.0
+offset_top = 124.0
+offset_right = -14.0
+offset_bottom = 358.792
+grow_horizontal = 0
+text = "You've unlocked a new Music Track!
+
+When enabled in the left panel, this track adds 
+a new layer of instruments that enhances objects 
+throughout the level with special features.
+
+While this increases the difficulty, it also 
+opens up faster completion strategies."
+label_settings = SubResource("LabelSettings_kve71")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 800.0
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LevelNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_girb3")
+horizontal_alignment = 1
+
+[node name="TracksContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HboxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TracksContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/TracksContainer/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("4_kve71")
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/TracksContainer/HboxContainer"]
+layout_mode = 2
+text = "Bass Track"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Start" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource("4_1ng71")]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Start"
+
+[node name="PressKeyToStartLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "(press space to start)"
+label_settings = SubResource("LabelSettings_xhf3v")
+horizontal_alignment = 1
+
+[node name="BackToMenu" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("4_1ng71")]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+text = "Back to menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dfmfm")
+bus = &"Sounds"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]

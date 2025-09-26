@@ -1,0 +1,242 @@
+[gd_scene load_steps=18 format=3 uid="uid://blswmkqfsy778"]
+
+[ext_resource type="Script" uid="uid://d3do0nq2kj3hx" path="res://Objects/MovingHead/moving_head.gd" id="1_jjfep"]
+[ext_resource type="Texture2D" uid="uid://rpmci1wwc8sc" path="res://Objects/MovingHead/Assets/Blink (42x42).png" id="2_jjfep"]
+[ext_resource type="Resource" uid="uid://cgxawdjxx0k6x" path="res://Objects/TrackUpgrades/Bass/bass_track.tres" id="2_wiybt"]
+[ext_resource type="Texture2D" uid="uid://3gh28vphx27m" path="res://Objects/MovingHead/Assets/Top Hit (42x42).png" id="3_ipo0f"]
+[ext_resource type="Texture2D" uid="uid://dmwoapx0no4kg" path="res://Objects/MovingHead/Assets/Bottom Hit (42x42).png" id="4_sg5he"]
+[ext_resource type="Texture2D" uid="uid://c1ar3y4tfitli" path="res://Objects/MovingHead/Assets/Left Hit (42x42).png" id="5_7ln33"]
+[ext_resource type="Texture2D" uid="uid://cnulkcb7lwbq3" path="res://Objects/MovingHead/Assets/Right Hit (42x42).png" id="6_5uyqg"]
+[ext_resource type="AudioStream" uid="uid://d2pybipsvgatf" path="res://Sounds/head_smash.wav" id="8_uxgob"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5h14"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_jjfep"]
+resource_name = "Blink"
+length = 2.00005
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_jjfep")]
+}
+
+[sub_resource type="Animation" id="Animation_7ln33"]
+resource_name = "Bottom Hit"
+length = 0.25000626
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_sg5he")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_5uyqg"]
+resource_name = "Left Hit"
+length = 0.25000626
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_7ln33")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ipo0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_jjfep")]
+}
+
+[sub_resource type="Animation" id="Animation_wiybt"]
+resource_name = "Right Hit"
+length = 0.25000626
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_5uyqg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_sg5he"]
+resource_name = "Top Hit"
+length = 0.25000626
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ipo0f")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ipo0f"]
+_data = {
+&"Blink": SubResource("Animation_jjfep"),
+&"Bottom Hit": SubResource("Animation_7ln33"),
+&"Left Hit": SubResource("Animation_5uyqg"),
+&"RESET": SubResource("Animation_ipo0f"),
+&"Right Hit": SubResource("Animation_wiybt"),
+&"Top Hit": SubResource("Animation_sg5he")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiybt"]
+size = Vector2(32, 3)
+
+[node name="MovingHead" type="Node2D" node_paths=PackedStringArray("head_body", "head_animation_player", "player_detector")]
+process_mode = 4
+script = ExtResource("1_jjfep")
+head_body = NodePath("HeadBody")
+head_animation_player = NodePath("HeadBody/AnimationPlayer")
+player_detector = NodePath("PlayerDetector")
+track_data = ExtResource("2_wiybt")
+
+[node name="HeadBody" type="AnimatableBody2D" parent="."]
+process_mode = 3
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="HeadBody"]
+process_mode = 3
+texture = ExtResource("2_jjfep")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadBody"]
+process_mode = 3
+shape = SubResource("RectangleShape2D_o5h14")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HeadBody"]
+libraries = {
+&"": SubResource("AnimationLibrary_ipo0f")
+}
+autoplay = "Blink"
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(0, -15.5)
+shape = SubResource("RectangleShape2D_wiybt")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_uxgob")
+volume_db = 6.656
+max_distance = 500.0
+bus = &"Sounds"
+
+[connection signal="animation_finished" from="HeadBody/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

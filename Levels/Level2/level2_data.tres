@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=5 format=3 uid="uid://dop4ravtb0fl7"]
+
+[ext_resource type="Script" uid="uid://xjt538310vxo" path="res://Objects/TrackUpgrades/Base/track_data.gd" id="1_le3sd"]
+[ext_resource type="Script" uid="uid://bycqo4dwskeqa" path="res://Levels/BaseLevel/level_data.gd" id="2_b0mlj"]
+[ext_resource type="Resource" uid="uid://dfd31b0bo22om" path="res://Objects/TrackUpgrades/Drums/drums_track.tres" id="2_enqkq"]
+[ext_resource type="Texture2D" uid="uid://cqtay5rgtbmuf" path="res://Levels/TileSet/Green.png" id="3_enqkq"]
+
+[resource]
+script = ExtResource("2_b0mlj")
+level_name = "Level 2"
+display_name = "Level 2"
+scene_path = "res://Levels/Level2/Level2.tscn"
+level_image = ExtResource("3_enqkq")
+bronze_time = 30.0
+silver_time = 20.0
+collectible_tracks = Array[ExtResource("1_le3sd")]([ExtResource("2_enqkq")])
+metadata/_custom_type_script = "uid://bycqo4dwskeqa"

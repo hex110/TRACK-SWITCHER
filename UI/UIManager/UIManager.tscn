@@ -1,0 +1,213 @@
+[gd_scene load_steps=10 format=3 uid="uid://vt8mursveyxv"]
+
+[ext_resource type="Script" uid="uid://c3uyivdt1kuk6" path="res://UI/UIManager/ui_manager.gd" id="1_m4wdw"]
+[ext_resource type="Shader" uid="uid://d0enoelv13y6q" path="res://UI/PauseMenu/CanvasBlur.gdshader" id="2_y25gj"]
+[ext_resource type="PackedScene" uid="uid://b31rfsqep83t2" path="res://UI/SettingsMenu/SettingsMenu.tscn" id="4_tpq7c"]
+[ext_resource type="PackedScene" uid="uid://rw3drs3nn0du" path="res://UI/PauseMenu/PauseMenu.tscn" id="5_adp5r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cebxl"]
+shader = ExtResource("2_y25gj")
+shader_parameter/lod = 1.0
+shader_parameter/overlay_alpha = 0.784
+
+[sub_resource type="Animation" id="Animation_hvk7a"]
+resource_name = "FadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlurBackground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlurBackground:material:shader_parameter/lod")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.08, 1, 1, -0.35, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlurBackground:material:shader_parameter/overlay_alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.08, 0.784, 0.784, -0.35, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_y25gj"]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlurBackground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlurBackground:material:shader_parameter/lod")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, 0, 0, 0.08, -1, 0, -0.35, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlurBackground:material:shader_parameter/overlay_alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.7771576, 0, 0, 0.08, -0.777, 0, -0.35, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_m4wdw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlurBackground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlurBackground:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0009999999),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_cebxl")]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlurBackground:material:shader_parameter/lod")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0.0009999999)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlurBackground:material:shader_parameter/overlay_alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.784, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0.0009999999)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m4wdw"]
+_data = {
+&"FadeIn": SubResource("Animation_hvk7a"),
+&"FadeOut": SubResource("Animation_y25gj"),
+&"RESET": SubResource("Animation_m4wdw")
+}
+
+[node name="UiManager" type="Control" node_paths=PackedStringArray("background", "bg_anim_player", "settings_menu", "pause_menu")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_m4wdw")
+background = NodePath("BlurBackground")
+bg_anim_player = NodePath("AnimationPlayer")
+settings_menu = NodePath("Screens/SettingsMenu")
+pause_menu = NodePath("Screens/PauseMenu")
+
+[node name="BlurBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cebxl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_m4wdw")
+}
+
+[node name="Screens" type="Control" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SettingsMenu" parent="Screens" instance=ExtResource("4_tpq7c")]
+layout_mode = 1
+
+[node name="PauseMenu" parent="Screens" instance=ExtResource("5_adp5r")]
+layout_mode = 1

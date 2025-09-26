@@ -1,0 +1,53 @@
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://chhpndpb0p3df"]
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_lnkdm"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_j3pel"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_g28q7"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_n8wo2"]
+resource_name = "SpectrumAnalyzer"
+
+[resource]
+bus/1/name = &"Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -2.1147432
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_lnkdm")
+bus/1/effect/0/enabled = true
+bus/2/name = &"Sounds"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -0.13271904
+bus/2/send = &"Master"
+bus/3/name = &"Base"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -0.13049698
+bus/3/send = &"Music"
+bus/3/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_j3pel")
+bus/3/effect/0/enabled = true
+bus/4/name = &"Bass"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 6.0199986
+bus/4/send = &"Music"
+bus/4/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_g28q7")
+bus/4/effect/0/enabled = true
+bus/5/name = &"Drums"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 6.0199986
+bus/5/send = &"Music"
+bus/5/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_n8wo2")
+bus/5/effect/0/enabled = true

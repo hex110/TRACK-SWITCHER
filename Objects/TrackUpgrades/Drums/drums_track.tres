@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrackData" load_steps=4 format=3 uid="uid://dfd31b0bo22om"]
+
+[ext_resource type="Texture2D" uid="uid://bf52hw872tjnv" path="res://Objects/TrackUpgrades/Drums/drumsUI.png" id="1_ngdeb"]
+[ext_resource type="Texture2D" uid="uid://bmsh7kufq85q4" path="res://Objects/TrackUpgrades/Drums/drumsUI_white.png" id="2_nafqg"]
+[ext_resource type="Script" uid="uid://xjt538310vxo" path="res://Objects/TrackUpgrades/Base/track_data.gd" id="3_p7ss1"]
+
+[resource]
+script = ExtResource("3_p7ss1")
+layer_name = "DrumsLayer"
+display_name = "Drums"
+icon = ExtResource("1_ngdeb")
+icon_white = ExtResource("2_nafqg")
+beat_threshold = 0.05
+metadata/_custom_type_script = "uid://xjt538310vxo"

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://keo01h3sk8tx"]
+
+[ext_resource type="Theme" uid="uid://cdravjaryx73k" path="res://UI/Theme.tres" id="1_qf4qt"]
+[ext_resource type="Script" uid="uid://cg6dncau1m3mu" path="res://UI/Elements/button.gd" id="2_k2xtp"]
+[ext_resource type="AudioStream" uid="uid://qtdgohn4ansx" path="res://UI/Elements/hover.wav" id="3_k2xtp"]
+[ext_resource type="AudioStream" uid="uid://bp0bkg6awnq5q" path="res://UI/Elements/click.wav" id="4_4jlcn"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 0
+theme = ExtResource("1_qf4qt")
+text = "Play"
+flat = true
+script = ExtResource("2_k2xtp")
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k2xtp")
+volume_db = -31.768
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4jlcn")
+volume_db = -18.179
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

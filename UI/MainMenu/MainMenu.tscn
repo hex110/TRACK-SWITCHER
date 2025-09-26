@@ -1,0 +1,548 @@
+[gd_scene load_steps=31 format=4 uid="uid://br1mh64sodm26"]
+
+[ext_resource type="Script" uid="uid://de67i3dyqw3vi" path="res://UI/MainMenu/main_menu.gd" id="1_a712v"]
+[ext_resource type="TileSet" uid="uid://wmsstl21vy3c" path="res://Levels/TileSet.tres" id="3_8x0bb"]
+[ext_resource type="Texture2D" uid="uid://b7umqlisq7pew" path="res://UI/MainMenu/1.png" id="3_nahvw"]
+[ext_resource type="Texture2D" uid="uid://wn4tontrxxpm" path="res://UI/MainMenu/2.png" id="5_a712v"]
+[ext_resource type="Texture2D" uid="uid://bexkt2b4xviqb" path="res://UI/MainMenu/3.png" id="6_1dhmk"]
+[ext_resource type="Texture2D" uid="uid://cr1fa6jksllig" path="res://UI/MainMenu/logo.png" id="6_jhcbk"]
+[ext_resource type="Texture2D" uid="uid://crj1jf041uqol" path="res://UI/MainMenu/4.png" id="7_jhcbk"]
+[ext_resource type="Texture2D" uid="uid://jwgb5pa7nool" path="res://Player/Assets/Sprint/player run 48x48.png" id="8_1dhmk"]
+[ext_resource type="Texture2D" uid="uid://c2kr0pu3lmsxs" path="res://UI/Icons/play.svg" id="9_wdl18"]
+[ext_resource type="Texture2D" uid="uid://3ibjtwpqab01" path="res://UI/Icons/settings.svg" id="10_migmm"]
+[ext_resource type="Texture2D" uid="uid://grjq7jksmvov" path="res://UI/Icons/quit.svg" id="11_jt3i8"]
+[ext_resource type="PackedScene" uid="uid://keo01h3sk8tx" path="res://UI/Elements/Button.tscn" id="13_jt3i8"]
+[ext_resource type="PackedScene" uid="uid://vt8mursveyxv" path="res://UI/UIManager/UIManager.tscn" id="13_wdl18"]
+[ext_resource type="PackedScene" uid="uid://bg2p624pss2ie" path="res://UI/LevelSelect/LevelSelect.tscn" id="14_migmm"]
+
+[sub_resource type="Animation" id="Animation_jhcbk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu/Animation/AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-875, 894)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/Animation/AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1dhmk"]
+resource_name = "WalkAcrossScreen"
+length = 10.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu/Animation/AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-875, 896), Vector2(2825, 896), Vector2(-875, 896)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/Animation/AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_32jca"]
+_data = {
+&"RESET": SubResource("Animation_jhcbk"),
+&"WalkAcrossScreen": SubResource("Animation_1dhmk")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dhmk"]
+atlas = ExtResource("8_1dhmk")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhcbk"]
+atlas = ExtResource("8_1dhmk")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32jca"]
+atlas = ExtResource("8_1dhmk")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srm2j"]
+atlas = ExtResource("8_1dhmk")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoxer"]
+atlas = ExtResource("8_1dhmk")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdl18"]
+atlas = ExtResource("8_1dhmk")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_migmm"]
+atlas = ExtResource("8_1dhmk")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt3i8"]
+atlas = ExtResource("8_1dhmk")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a712v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dhmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhcbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32jca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srm2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoxer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdl18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_migmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt3i8")
+}],
+"loop": true,
+"name": &"sprint",
+"speed": 20.0
+}]
+
+[sub_resource type="Animation" id="Animation_migmm"]
+resource_name = "LevelSelectToMainMenu"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelSelect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelSelect:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSelect:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelSelect:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LevelSelect:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, 0, 0, 0.08, -1, 0, -0.35, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LevelSelect:mouse_behavior_recursive")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_q33u5"]
+resource_name = "MainMenuToLevelSelect"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelSelect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelSelect:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSelect:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelSelect:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LevelSelect:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.08, 1, 1, -0.35, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LevelSelect:mouse_behavior_recursive")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jt3i8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelSelect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelSelect:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSelect:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelSelect:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LevelSelect:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LevelSelect:mouse_behavior_recursive")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jt3i8"]
+_data = {
+&"LevelSelectToMainMenu": SubResource("Animation_migmm"),
+&"MainMenuToLevelSelect": SubResource("Animation_q33u5"),
+&"RESET": SubResource("Animation_jt3i8")
+}
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("ui_manager", "level_select", "animation_player")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a712v")
+ui_manager = NodePath("UiManager")
+level_select = NodePath("LevelSelect")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nahvw")
+stretch_mode = 6
+
+[node name="Background2" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_a712v")
+stretch_mode = 6
+
+[node name="Background3" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_1dhmk")
+stretch_mode = 6
+
+[node name="Background4" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_jhcbk")
+stretch_mode = 6
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -407.0
+offset_right = 901.0
+offset_bottom = -181.0
+grow_vertical = 2
+texture = ExtResource("6_jhcbk")
+expand_mode = 1
+
+[node name="Animation" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Menu/Animation"]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AADx/w8AAAARAAEAAADy/w8AAAASAAEAAADz/w8AAAATAAEAAAD0/w8AAAARAAEAAAD1/w8AAAASAAEAAAD2/w8AAAATAAEAAAD3/w8AAAARAAEAAAD4/w8AAAASAAEAAAD5/w8AAAATAAEAAAD6/w8AAAARAAEAAAD7/w8AAAASAAEAAAD8/w8AAAATAAEAAAD9/w8AAAARAAEAAAD+/w8AAAASAAEAAAD//w8AAAATAAEAAAAAAA8AAAARAAEAAAABAA8AAAASAAEAAAACAA8AAAATAAEAAAADAA8AAAARAAEAAAAEAA8AAAASAAEAAAAFAA8AAAATAAEAAAAGAA8AAAARAAEAAAAHAA8AAAASAAEAAAAIAA8AAAATAAEAAAAJAA8AAAARAAEAAAAKAA8AAAASAAEAAAALAA8AAAATAAEAAAAMAA8AAAARAAEAAAANAA8AAAASAAEAAAAOAA8AAAATAAEAAAAPAA8AAAARAAEAAAAQAA8AAAASAAEAAAARAA8AAAATAAEAAAASAA8AAAARAAEAAAATAA8AAAASAAEAAAAUAA8AAAATAAEAAAAVAA8AAAARAAEAAAAWAA8AAAASAAEAAAAXAA8AAAATAAEAAAAYAA8AAAARAAEAAAAZAA8AAAASAAEAAAAaAA8AAAATAAEAAAAbAA8AAAARAAEAAAAcAA8AAAASAAEAAAAdAA8AAAATAAEAAAAeAA8AAAARAAEAAAAfAA8AAAASAAEAAAAgAA8AAAATAAEAAAAhAA8AAAARAAEAAAAiAA8AAAASAAEAAAAjAA8AAAATAAEAAAAkAA8AAAARAAEAAAAlAA8AAAASAAEAAAAmAA8AAAATAAEAAAAnAA8AAAARAAEAAAAoAA8AAAASAAEAAAApAA8AAAATAAEAAAAqAA8AAAARAAEAAAArAA8AAAASAAEAAAAsAA8AAAATAAEAAAA=")
+tile_set = ExtResource("3_8x0bb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/Animation"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_32jca")
+}
+autoplay = "WalkAcrossScreen"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Menu/Animation"]
+position = Vector2(-875, 894)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_a712v")
+animation = &"sprint"
+autoplay = "sprint"
+frame_progress = 0.090441935
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = -130.0
+offset_right = 495.0
+offset_bottom = 170.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Play" parent="Menu/VBoxContainer" instance=ExtResource("13_jt3i8")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+icon = ExtResource("9_wdl18")
+
+[node name="Settings" parent="Menu/VBoxContainer" instance=ExtResource("13_jt3i8")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Settings
+"
+icon = ExtResource("10_migmm")
+
+[node name="Quit" parent="Menu/VBoxContainer" instance=ExtResource("13_jt3i8")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Quit
+"
+icon = ExtResource("11_jt3i8")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Feedback" parent="Menu/MarginContainer/VBoxContainer" instance=ExtResource("13_jt3i8")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+text = "Feedback"
+
+[node name="Credits" parent="Menu/MarginContainer/VBoxContainer" instance=ExtResource("13_jt3i8")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+text = "Credits"
+
+[node name="UiManager" parent="." instance=ExtResource("13_wdl18")]
+visible = false
+layout_mode = 1
+
+[node name="LevelSelect" parent="." instance=ExtResource("14_migmm")]
+visible = false
+modulate = Color(1, 1, 1, 1)
+layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jt3i8")
+}
+
+[connection signal="pressed" from="Menu/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Feedback" to="." method="_on_feedback_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

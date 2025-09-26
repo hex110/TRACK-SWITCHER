@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba5i3mrvkh6x1"]
+
+[ext_resource type="PackedScene" uid="uid://biwkpj18tcah3" path="res://Objects/TrackUpgrades/Base/BaseTrackUpgrade.tscn" id="1_po4fg"]
+[ext_resource type="Resource" uid="uid://cgxawdjxx0k6x" path="res://Objects/TrackUpgrades/Bass/bass_track.tres" id="2_dy3tq"]
+[ext_resource type="Texture2D" uid="uid://bdwqb3jlucca2" path="res://Objects/TrackUpgrades/Bass/bassupgrade.png" id="3_tns11"]
+
+[node name="BassTrackUpgrade" instance=ExtResource("1_po4fg")]
+track_data = ExtResource("2_dy3tq")
+
+[node name="Particles" parent="CollisionShape2D" index="0"]
+position = Vector2(0, -18)
+
+[node name="Sprite" parent="CollisionShape2D" index="2"]
+position = Vector2(2.9802322e-08, -1.1920929e-07)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_tns11")

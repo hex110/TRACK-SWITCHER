@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://bl8llktuovo4f"]
+
+[ext_resource type="Script" uid="uid://p1cqajh2nmik" path="res://UI/LevelSelect/level.gd" id="1_qtjya"]
+[ext_resource type="Texture2D" uid="uid://oaseulq78bsx" path="res://Levels/TileSet/Brown.png" id="2_bn8wj"]
+[ext_resource type="Texture2D" uid="uid://bumcabk4u6l7o" path="res://UI/WinScreen/gold_trophy.png" id="2_if545"]
+[ext_resource type="Texture2D" uid="uid://c5gerufiqdcje" path="res://UI/WinScreen/silver_trophy.png" id="3_1xmty"]
+[ext_resource type="Texture2D" uid="uid://dr1uasowhsfdj" path="res://UI/WinScreen/bronze_trophy.png" id="4_ytajm"]
+[ext_resource type="AudioStream" uid="uid://qtdgohn4ansx" path="res://UI/Elements/hover.wav" id="6_ytajm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1xmty"]
+font_size = 32
+
+[node name="Level" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -157.5
+offset_right = 128.0
+offset_bottom = 157.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 157.5)
+size_flags_horizontal = 6
+script = ExtResource("1_qtjya")
+gold_medal = ExtResource("2_if545")
+silver_medal = ExtResource("3_1xmty")
+bronze_medal = ExtResource("4_ytajm")
+
+[node name="LevelName" type="Label" parent="."]
+layout_mode = 2
+text = "Level 1"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("2_bn8wj")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="BestTime" type="Label" parent="."]
+layout_mode = 2
+text = "01:00"
+label_settings = SubResource("LabelSettings_1xmty")
+horizontal_alignment = 1
+
+[node name="Medal" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_if545")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ytajm")
+volume_db = -31.768
+
+[node name="TrackIconsContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

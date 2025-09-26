@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://byjjmcy7byjla"]
+
+[ext_resource type="Script" uid="uid://s57ubnb3xmw4" path="res://UI/LevelTimer/level_timer.gd" id="1_56pf0"]
+
+[node name="LevelTimer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_56pf0")

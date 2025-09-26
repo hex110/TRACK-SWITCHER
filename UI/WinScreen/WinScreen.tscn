@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://bgv2k62wdn2y6"]
+
+[ext_resource type="Shader" uid="uid://d0enoelv13y6q" path="res://UI/PauseMenu/CanvasBlur.gdshader" id="1_3k84v"]
+[ext_resource type="Script" uid="uid://n7ev7eoba8a7" path="res://UI/WinScreen/win_screen.gd" id="1_uebm8"]
+[ext_resource type="Texture2D" uid="uid://bumcabk4u6l7o" path="res://UI/WinScreen/gold_trophy.png" id="2_5fq87"]
+[ext_resource type="Texture2D" uid="uid://c5gerufiqdcje" path="res://UI/WinScreen/silver_trophy.png" id="3_f6tx2"]
+[ext_resource type="Texture2D" uid="uid://dr1uasowhsfdj" path="res://UI/WinScreen/bronze_trophy.png" id="4_0qie0"]
+[ext_resource type="PackedScene" uid="uid://keo01h3sk8tx" path="res://UI/Elements/Button.tscn" id="6_5fq87"]
+[ext_resource type="AudioStream" uid="uid://bvhrhyuhhi0y4" path="res://Sounds/ui_postgame_strawberry_total_all.ogg" id="7_f6tx2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cq53s"]
+shader = ExtResource("1_3k84v")
+shader_parameter/lod = 1.0
+shader_parameter/overlay_alpha = 0.784
+
+[sub_resource type="LabelSettings" id="LabelSettings_uebm8"]
+font_size = 64
+
+[node name="WinScreen" type="Control" node_paths=PackedStringArray("time_label", "medal_icon", "medal_text", "record_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uebm8")
+time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
+medal_icon = NodePath("MarginContainer/VBoxContainer/MedalContainer/MedalIcon")
+medal_text = NodePath("MarginContainer/VBoxContainer/MedalContainer/MedalText")
+record_label = NodePath("MarginContainer/VBoxContainer/RecordLabel")
+gold_medal = ExtResource("2_5fq87")
+silver_medal = ExtResource("3_f6tx2")
+bronze_medal = ExtResource("4_0qie0")
+
+[node name="BlurBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cq53s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+alignment = 1
+
+[node name="LevelCompleteLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Level Complete!"
+label_settings = SubResource("LabelSettings_uebm8")
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Time: 0:05"
+label_settings = SubResource("LabelSettings_uebm8")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MedalContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MedalIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/MedalContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("2_5fq87")
+expand_mode = 3
+
+[node name="MedalText" type="Label" parent="MarginContainer/VBoxContainer/MedalContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Gold"
+horizontal_alignment = 1
+
+[node name="RecordLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Record!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="NextLevel" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("6_5fq87")]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+text = "Next level"
+
+[node name="Restart" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("6_5fq87")]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+text = "Restart"
+
+[node name="BackToMenu" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("6_5fq87")]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+text = "Back to menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_f6tx2")
+bus = &"Sounds"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
